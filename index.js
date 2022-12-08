@@ -40,7 +40,10 @@ app.use(express.static(path.join(__dirname, "/frontend/build")));
 //global variable
 global.appRoot = path.resolve(__dirname);
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/frontend/build/index.html"));
+  res.json({"msg":"No route found !!"});
+});
+app.get("/", (req, res) => {
+  res.json({"msg":"Api Deployed Successfully !!"});
 });
 const port = process.env.PORT || APP_PORT;
 app.listen(port, () => {
