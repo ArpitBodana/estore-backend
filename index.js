@@ -39,12 +39,13 @@ app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 app.use(express.static(path.join(__dirname, "/frontend/build")));
 //global variable
 global.appRoot = path.resolve(__dirname);
-app.get("*", (req, res) => {
-  res.json({"msg":"No route found !!"});
-});
 app.get("/", (req, res) => {
-  res.json({"msg":"Api Deployed Successfully !!"});
+  res.json({ msg: "Api Deployed Successfully !!" });
 });
+app.get("*", (req, res) => {
+  res.json({ msg: "No route found !!" });
+});
+
 const port = process.env.PORT || APP_PORT;
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
